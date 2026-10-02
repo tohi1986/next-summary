@@ -1,0 +1,320 @@
+OSNOVNO — NIKAKO NE ZABORAVI
+
+MOBILE FIRST SCREEN
+
+UVIJEK SE SJETI: u novoj komponenti krenuti od **mobile-first** pristupa.
+
+
+
+Koristiš oboje, ali za različite stvari:
+
+Container
+   ↓
+drži cijeli sadržaj uredno ograničenim
+   ↓
+mobile-first klase
+   ↓
+određuju kako se pojedini elementi ponašaju
+
+Primjer:
+
+<Container>
+  <h1 className="text-3xl md:text-5xl">
+    Moji projekti
+  </h1>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    ...
+  </div>
+</Container>
+
+Container:
+
+"Koliko široko smije biti ovo područje?"
+
+h1:
+
+"Koliko sam velik na mobitelu i desktopu?"
+
+Grid:
+
+"Koliko kartica ide u jedan red?"
+
+
+
+
+# GIT WORKFLOW
+
+Dobiješ zadatak / krećeš raditi:
+
+1. Napraviš branch
+2. Napraviš što treba / odradiš posao
+3. `git add`
+4. Commit
+5. Push
+6. Senior odobri i mergea u `main`
+7. Povlačiš novi mergani `main`
+8. Radiš novi branch za novi zadatak
+
+---
+
+# COMMIT TYPES
+
+feat:       nova funkcionalnost
+fix:        popravak buga
+refactor:   promjena koda bez dodavanja funkcionalnosti
+style:      promjene izgleda / formatiranje / CSS
+chore:      održavanje projekta, config, dependency update
+docs:       dokumentacija
+test:       dodavanje ili izmjena testova
+perf:       poboljšanje performansi
+build:      build sustav, konfiguracije, npm
+ci:         CI/CD promjene (GitHub Actions itd.)
+revert:     vraćanje prethodnog commita
+```
+
+---
+
+# NEXT.JS OSNOVE
+
+```text
+layout.tsx = okvir aplikacije
+page.tsx   = sadržaj stranice
+component  = dio stranice koji ponavljaš
+Tailwind   = kako sve izgleda
+```
+
+---
+
+# MODERNA NEXT.JS STRUKTURA
+
+```text
+my-project/
+├── .env.local
+├── .env.example
+├── package.json
+├── next.config.ts
+├── tsconfig.json
+├── tailwind.config.ts
+├── components.json          # ako koristiš shadcn/ui
+│
+├── prisma/                  # ili drizzle/
+│   ├── schema.prisma
+│   └── migrations/
+│
+├── public/
+│   ├── images/
+│   └── icons/
+│
+└── src/
+    ├── app/
+    │   ├── (auth)/
+    │   │   ├── login/
+    │   │   │   └── page.tsx
+    │   │   └── register/
+    │   │       └── page.tsx
+    │   │
+    │   ├── (dashboard)/
+    │   │   ├── layout.tsx
+    │   │   ├── page.tsx
+    │   │   └── projects/
+    │   │       ├── page.tsx
+    │   │       └── [id]/
+    │   │           └── page.tsx
+    │   │
+    │   ├── api/
+    │   │   └── webhooks/
+    │   │       └── stripe/
+    │   │           └── route.ts
+    │   │
+    │   ├── layout.tsx
+    │   ├── page.tsx
+    │   ├── loading.tsx
+    │   └── error.tsx
+    │
+    ├── features/
+    │   ├── auth/
+    │   │   ├── actions.ts
+    │   │   ├── queries.ts
+    │   │   ├── schema.ts
+    │   │   ├── types.ts
+    │   │   └── components/
+    │   │       ├── LoginForm.tsx
+    │   │       └── RegisterForm.tsx
+    │   │
+    │   ├── projects/
+    │   │   ├── actions.ts
+    │   │   ├── queries.ts
+    │   │   ├── schema.ts
+    │   │   ├── types.ts
+    │   │   └── components/
+    │   │       ├── ProjectCard.tsx
+    │   │       └── ProjectForm.tsx
+    │   │
+    │   └── billing/
+    │       ├── actions.ts
+    │       └── stripe.ts
+    │
+    └── components/
+        ├── ui/
+        │   ├── button.tsx
+        │   ├── input.tsx
+        │   └── modal.tsx
+        │
+        └── shared/
+```
+
+---
+
+
+
+
+
+# useActionState HOOK
+
+
+
+                         funkcija koja se treba izvršiti
+                                      │
+                                      │
+                                      ▼
+              const [state, formAction] = useActionState(createPost, null);
+                         │                     │
+                         │                     └── okidač funkcija
+                         │                         koja u sebi sadrži
+                         │                         funkciju createPost
+                         │
+                         └── rezultat dobiven
+                             server akcijom
+```
+
+---
+
+# CACHE
+
+```text
+                         NEXT.JS CACHE
+                              │
+             ┌────────────────┼────────────────┐
+             │                │                │
+             ▼                ▼                ▼
+         Data Cache       Full Route        Router Cache
+                            Cache
+             │                │                │
+             ▼                ▼                ▼
+           fetch            HTML/RSC        client nav
+```
+
+---
+
+
+
+
+# CACHE — KAKO RAZMIŠLJATI
+
+```text
+                    TREBA LI OVAJ PODATAK?
+                              │
+                              ▼
+                       Je li isti za sve?
+                         /          \
+                       DA            NE
+                       │              │
+                       ▼              ▼
+                     CACHE         DYNAMIC
+                       │
+                       ▼
+               Koliko često se mijenja?
+                    /          \
+                rijetko        često
+                  │              │
+                  ▼              ▼
+            force-cache      revalidate
+```
+
+---
+
+# COOKIE VS SESSION
+
+```text
+Cookie  = ključ / propusnica
+
+Session = zapis da je ključ valjan
+```
+
+---
+
+
+
+
+
+
+
+# STARI NEXT.JS VS MODERNI NEXT.JS
+
+```text
+                    STARI NEXT
+                 (Pages Router)
+                         │
+                         ▼
+                    pages/
+```
+
+## Legacy projekt
+
+Ono što ti je bitno prepoznati:
+
+```text
+pages/
+├── index.tsx              → /
+├── about.tsx              → /about
+├── posts/
+│   ├── index.tsx          → /posts
+│   └── [id].tsx           → /posts/:id
+│
+├── api/
+│   └── posts.ts           → /api/posts
+│
+├── _app.tsx               → globalni wrapper
+└── _document.tsx          → HTML document
+```
+
+---
+
+# KAD VIDIŠ OVO...
+
+### `getServerSideProps()`
+
+Znači:
+
+> "Aha, Pages Router + server-side data fetching."
+
+### `getStaticProps()`
+
+Znači:
+
+> "Aha, stranica se generira statički."
+
+### `getStaticPaths()`
+
+Znači:
+
+> "Aha, dinamičke statičke stranice."
+
+### `pages/api/...`
+
+Znači:
+
+> "API Route."
+
+### `_app.tsx`
+
+Znači:
+
+> "Globalni wrapper / provideri."
+
+### `_document.tsx`
+
+Znači:
+
+> "Osnovni HTML document."
