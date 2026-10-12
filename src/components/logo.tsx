@@ -15,7 +15,7 @@ export default function Logo() {
   width={2170}
   height={659}
   priority
-  className="h-auto w-36 sm:w-44 md:w-52 lg:w-64"
+  className="h-auto w-40 sm:w-48 md:w-56 lg:w-72"
 />
 
     </Link>
