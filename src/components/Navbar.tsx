@@ -34,8 +34,8 @@ export default function Navbar() {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
+                  stroke="white"
+                  fill="white"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
