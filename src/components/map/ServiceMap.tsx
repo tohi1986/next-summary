@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -15,15 +16,13 @@ export default function ServiceMap() {
     const map = new Map({
       container: mapContainer.current,
       center: [7.0116, 51.4556],
-      zoom: 10,
+      zoom: 11,
+      minZoom: 8,
+      maxZoom: 18,
       style: "/stamen.json",
       attributionControl: {
-    compact: true,
-      }
-    });
-
-    map.on("load", () => {
-      
+        compact: true,
+      },
     });
 
     return () => {
