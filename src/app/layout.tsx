@@ -66,7 +66,7 @@ export default function RootLayout({
           </span>
         </section>
 
-        <div className="flex-1">{children}</div>
+        <div className="sflex-1">{children}</div>
       </body>
     </html>
   );
