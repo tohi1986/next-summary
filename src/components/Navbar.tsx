@@ -20,7 +20,7 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="whitespace-nowrap font-(family-name:--font-barlow) text-xs font-extrabold uppercase tracking-tight text-amber-500 transition-colors duration-200 hover:text-white min-[350px]:text-sm min-[390px]:text-base sm:text-2xl lg:text-3xl"
+                  className="inline-block scale-y-130 sm:scale-y-100 whitespace-nowrap font-(family-name:--font-barlow) text-xs font-extrabold uppercase tracking-tight text-amber-500 transition-colors duration-200 hover:text-white min-[350px]:text-sm min-[390px]:text-base sm:text-2xl lg:text-3xl"
                 >
                   {item.label}
                 </Link>

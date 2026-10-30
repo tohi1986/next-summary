@@ -1,22 +1,31 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import { Space_Grotesk, Barlow_Condensed } from "next/font/google";
+import localFont from "next/font/local";
 
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
+const spaceGrotesk = localFont({
+  src: "../../public/fonts/SpaceGrotesk-VariableFont_wght.ttf",
+  weight: "300 700",
   variable: "--font-space-grotesk",
+  display: "swap",
 });
 
-
-const barlow = Barlow_Condensed({
-  subsets: ["latin"],
-  weight: ["700", "800"],
+const barlow = localFont({
+  src: [
+    {
+      path: "../../public/fonts/BarlowCondensed-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/BarlowCondensed-ExtraBold.ttf",
+      weight: "800",
+      style: "normal",
+    },
+  ],
   variable: "--font-barlow",
+  display: "swap",
 });
-
-
 
 export const metadata: Metadata = {
   title: "PKW Transport NRW | Abschleppdienst bis 3,5 t",
@@ -33,20 +42,31 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
+
     <html lang="de">
       <body
-        className={`${spaceGrotesk.variable} ${barlow.variable} flex h-dvh flex-col overflow-hidden`}
+        className={`${spaceGrotesk.variable} ${barlow.variable} flex min-h-dvh flex-col`}
       >
         <Navbar />
 
-        <div className="min-h-0 flex-1 overflow-hidden">
-          {children}
-        </div>
+        <section className="flex items-center justify-between border-y border-amber-500/50 bg-slate-950 px-5 py-0.5 ">
+          <span className="text-[10px] font-bold tracking-widest text-amber-500">
+            24/7
+          </span>
+
+          <span className="text-[10px] font-bold tracking-widest text-amber-500">
+            LIVE-FAHRZEUGTRACKING
+          </span>
+        </section>
+
+        <div className="flex-1">{children}</div>
       </body>
     </html>
   );
